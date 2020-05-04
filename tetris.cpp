@@ -8,6 +8,7 @@
 #include <iostream>
 
 void Tetris::newPiece() {
+    //Initialize a new piece at the top, and prepare the next.
     cury = 0;
     curx = (BOARDWIDTH / 2)-1;
     curr = 0;
@@ -15,6 +16,7 @@ void Tetris::newPiece() {
     curPiece = nextPiece;
     nextPiece = rand() % 7;
 
+    //If the piece being placed exceeds the top of the board
     if (staticBoard[BOARDWIDTH*1.5] != 0) { gameOver = true; }
 }
 
@@ -30,7 +32,7 @@ void Tetris::init() {
 }
 
 std::array<int, BOARDSIZE> Tetris::getBoard() {
-    //Returns staticboard and the current piece
+    //Returns staticboard, with the current piece superimposed on it
     std::array<int, BOARDSIZE> board = staticBoard;
     for (int i = 0; i < 4; i++) {
         int xpos = curx + TETROMINOES[curPiece][curr][i][0];
@@ -48,6 +50,7 @@ std::array<int, 4> Tetris::getInfo() {
 }
 
 void Tetris::clearRows() {
+    //Scan the lines for full rows. Remove filled lines and give points
     int prevlines = lines;
 
     for (int line = 0; line < BOARDHEIGHT; line++) {
@@ -74,7 +77,7 @@ void Tetris::clearRows() {
 
         }
     }
-
+    //Scoring according to the Tetris wikia
     switch (lines - prevlines) {
         case 1:
             points += 40 * (level+1);
@@ -105,6 +108,7 @@ bool Tetris::testLanded() {
 }
 
 void Tetris::lock() {
+    //Places the current piece onto the staticboard
     for (int i = 0; i < 4; i++) {
         int xpos = curx + TETROMINOES[curPiece][curr][i][0];
         int ypos = cury + TETROMINOES[curPiece][curr][i][1];
@@ -173,7 +177,7 @@ void Tetris::rotate() {
 void Tetris::tick(bool keys[], bool fallfast) {
     //Main Game Loop
     //Takes these inputs:
-    //  keys[] = boolean, true uf these keys are held down, in order: left, right, up, down, space
+    //  keys[] = boolean, true if these keys are held down, in order: left, right, up, down, space
     //  fall = boolean, true if this is a "gravity tick". Otherwise, only right/left and rotation is performed
 
     if (gameOver) { return; }
