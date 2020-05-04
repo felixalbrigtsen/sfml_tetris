@@ -62,6 +62,7 @@ void drawBoard(std::array<int, BOARDSIZE> board) {
 }
 
 void drawInfo(std::array<int, 4> info) {
+    //Draw the right half of the screen
     // In order: Level, Lines, Score, Next piece
     int level = info[0];
     int lines = info[1];
