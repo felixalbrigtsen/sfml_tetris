@@ -3,6 +3,9 @@ A simple tetris clone written in C++, using SFML for graphics and input handling
 
 Mimics the feel of retro tetris.
 
+![Gameplay Screenshot](./screenshot.png)
+
+
 # Install / Build
 
 1. Install a c++ compiler, i used gcc on mac
