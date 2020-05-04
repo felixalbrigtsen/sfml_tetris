@@ -7,7 +7,7 @@ game: tetris.cpp tetris.hpp
 	g++ -c tetris.cpp -o game.o
 
 out: main game
-	g++ main.o game.o -o out $(LINKER_FLAGS)
+	g++ main.o game.o -o tetris $(LINKER_FLAGS)
 
 clean:
 	rm main.o game.o out
