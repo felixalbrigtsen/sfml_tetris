@@ -1,5 +1,6 @@
 # sfml_tetris
-A simple tetris clone written in C++, using SFML for graphics and input handling
+A simple tetris clone written in C++, using SFML for graphics and input handling.
+
 Mimics the feel of retro tetris.
 
 # Install / Build
